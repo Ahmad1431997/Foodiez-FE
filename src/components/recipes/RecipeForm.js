@@ -7,12 +7,12 @@ import { useParams } from "react-router";
 import { createRecipe } from "../../store/actions/recipeActions";
 
 const RecipeFrom = () => {
-  const recipeSlug = useParams().recipeSlug;
-  const recipes = useSelector((state) => state.recipes.recipes);
   const ingredients = useSelector((state) => state.ingredients.ingredients);
   const [recipe, setRecipe] = useState({
     name: "",
     image: "",
+    video: "",
+    ingredients: [],
   });
 
   const dispatch = useDispatch();
@@ -21,6 +21,8 @@ const RecipeFrom = () => {
     setRecipe({
       name: "",
       image: "",
+      video: "",
+      ingredients: [],
     });
   };
   const handleSubmit = (event) => {
@@ -33,11 +35,16 @@ const RecipeFrom = () => {
   };
   const handleChange = (event) => {
     setRecipe({ ...recipe, [event.target.name]: event.target.value });
+    // console.log(event.target.value);
   };
+
   const handleImage = (event) => {
     setRecipe({ ...recipe, image: event.target.files[0] });
   };
-
+  const handleOption = (event) => {
+    recipe.ingredients.push(event.target.value);
+    // console.log(recipe.ingredients);
+  };
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
@@ -45,7 +52,7 @@ const RecipeFrom = () => {
         <input
           type="text"
           className="form-control"
-          id="exampleFormControlInput1"
+          
           placeholder="Name of Recipe"
           onChange={handleChange}
           name="name"
@@ -65,25 +72,29 @@ const RecipeFrom = () => {
           //   value={recipe.image}
         />
       </div>
-     
+
       <div className="form-group">
         <label>video URL</label>
         <input
           type="text"
           className="form-control"
-          id="exampleFormControlInput1"
+          
           placeholder="Name of Recipe"
           onChange={handleChange}
-          name="name"
+          name="video"
           value={recipe.video}
         />
       </div>
 
       <div>
         <label for="ing">Choose ingredient:</label>
-        <select onChange={handleChange} name="ingredients" id="ing" multiple>
-           { ingredients.forEach((ingredient)=><option value={ingredient.id}>{ingredient.name}</option>) }
-          
+        <select name="ingredients" id="ing" multiple>
+          {ingredients.map((ingredient) => (
+            <option onClick={handleOption} value={ingredient.id}>
+              {ingredient.name}
+            </option>
+          ))}
+
           {/* <option value="2">Saab</option>
           <option value="3">Opel</option>
           <option value="4">Audi</option> */}

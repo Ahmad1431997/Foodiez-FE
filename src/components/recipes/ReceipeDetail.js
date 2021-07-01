@@ -15,7 +15,7 @@ const RecipeDetail = () => {
   const recipe = recipes.find(
     (recipe) => recipe.slug === recipeSlug
   );
-  console.log(recipe)
+ 
 
   if (!recipe||recipeLoading || ingredientLoading) return <Redirect to="/recipes" />;
 const getIngredientById = (ingredientId, ingredients) => 
@@ -23,7 +23,7 @@ const getIngredientById = (ingredientId, ingredients) =>
 
     
   const listOfIngredients = recipe.ingredients? recipe.ingredients.map((ingredient) =>getIngredientById(ingredient.id, ingredients)) : []
-  
+  console.log(listOfIngredients)
  
     
   return (

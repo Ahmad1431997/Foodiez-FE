@@ -20,11 +20,15 @@ export const fetchRecipes = () => {
 export const createRecipe = (newRecipe) => {
   return async (dispatch) => {
     try {
+      console.log(newRecipe)
       const formData = new FormData();
-     const ingredientIds=[1,2,3,4,5].join(",")
-      for (const Key in newRecipe)
-       formData.append(Key, newRecipe[Key]);
-      const res = await axios.post(`http://localhost:8080/recipes`,formData,ingredientIds);
+    //  const ingredientIds=[1,2,3,4,5].join(",")
+     console.log("hi")
+      for (const key in newRecipe)
+       formData.append(key, newRecipe[key]);
+
+       console.log(formData)
+      const res = await axios.post(`http://localhost:8080/recipes`,formData);
       
       dispatch({
         type: ADD_RECIPE,
