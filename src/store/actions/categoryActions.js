@@ -5,6 +5,7 @@ export const addCategory = (category)=> {
     return async(dispatch)=>{
         try {
             const formData= new FormData();
+           
             for(const key in category)
                formData.append(key,category[key])
 

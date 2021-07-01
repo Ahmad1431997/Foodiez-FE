@@ -16,13 +16,15 @@ const CategoriesList = () => {
 
     
   return (
-    <div>
-      <Link to="/categories/new">Add New Category</Link>
-      <SearchBar setQuery={setQuery}  />
+    <><br/>
+    <div className="row"><br/><br/>
+      <Link style={{textDecoration:"none",backgroundColor:"darkcyan",width:"200px",margin:"auto",color:"white"}} to="/categories/new">Add New Category</Link><br/><br/>
+      <SearchBar setQuery={setQuery}  /><br/><br/><br/>
       
-      {categories}
+      <div className="row">{categories}</div>
       
     </div>
+    </>
   );
 };
 

@@ -12,7 +12,7 @@ const NavBar = () => {
     <Link to ="/categories">Categories</Link>
     <Nav className="me-auto">
       <Link to="/ingredients">ingredients</Link>
-      <Nav.Link href="#features">Features</Nav.Link>
+      <Link to="/recipes">recipes</Link>
       <Nav.Link href="#pricing">Pricing</Nav.Link>
     </Nav>
     </Container>

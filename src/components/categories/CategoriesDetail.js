@@ -1,12 +1,9 @@
 import { Link, Redirect, useParams } from "react-router-dom";
 
 // Components
-// import DeleteButton from "./buttons/DeleteButton";
-// Styling
-// import { DetailWrapper } from "../styles";
+
 import { useSelector } from "react-redux";
-// import ProductList from "./ProductList";
-// import { getIngredientById } from "../../store/utlis";
+
 
 import IngredientsList from "../ingredients/IngredientsList";
 const CategoriesDetail = () => {
@@ -31,7 +28,7 @@ const getIngredientById = (ingredientId, ingredients) =>
     
   return (
     <div>
-      {/* <Link to="/ingredients/new">Add New Ingredient</Link> */}
+      
       <Link to="/categories">Back to Categories</Link>
       <Link to={`/categories/${category.id}/ingredients/new`}  >Add Ingredient</Link>
       <h1>{category.name}</h1>
